@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="ex">
+    返回状态:<h5 style="color:red">{{result}}</h5>
+</div>
+<div id="header" style="background-color:#cccccc;">
+<h1 style="margin-bottom:0;" align="center" class="page-header">测试服务器管理</h1></div>
+
+<form action="" method="post" class="form-horizontal">
+    {% csrf_token %}
+   <h4 style="color:green" style="font-size:200%">
+<!--    <input type="radio" name="ip" value={{value}} placeholder="Text input" checked class="first-icon fui-radio-unchecked"/>{{key}} -->
+    <select name="ip" style="width:auto;margin-top:0px" id="ip">
+        {% for key,value in server.items %}
+        <option value={{value}}>{{ key }}</option>
+        {% endfor %}
+     </select>
+<!--   <script language="javascript" type="text/javascript" src="{{STATIC_URL}}js/My97DatePickerBeta/My97DatePicker/WdatePicker.js"></script> -->
+    <input type="text" name="value" onclick="WdatePicker()" placeholder="调解服务器时间" class="span3"/>
+<!--     <input type="text"  name="openTime" readonly="readonly" class="span2 date"/> -->
+    <input type="submit" name="value" value="重启测试服" onclick="return confirm('确定重启吗')" class="btn btn-warning"  />
+    <input type="submit" name="value" value="关闭测试服" onclick="return confirm('关闭测试服')" class="btn btn-warning"  />
+    <input type="submit" name="value" value="检查运行状态" class="btn btn-info" />
+    <input type="submit" name="value" value="更新版本" onclick="return confirm('确定更新版本吗')" class="btn btn-primary"/>
+    <input type="submit" name="value" value="当前时间" class="btn btn-info" />
+    <input type="submit" value="提交请求" onclick="return confirm('确定提交请求吗')" class="btn btn-success"/>
+    </h4>
+</form>
+<!--<form action="" method="post" class="form-horizontal">
+    {% csrf_token %}
+   <h4 style="color:green" style="font-size:200%">
+      <select name="ip" style="width:auto;margin-top:0px" id="ip">
+        {% for key,value in server.items %}
+        <option value={{value}}>{{ key }}</option>
+        {% endfor %}
+     </select>
+    <input type="text" name="gmvalue"  placeholder="添加GM角色名称" class="span3"/>
+    <input type="submit" name='value' value="提交GM请求" onclick="return confirm('确定添加GM?')" class="btn btn-success"/>
+    </h4>
+</form> -->
+{% endblock %}
